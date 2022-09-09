@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Intro from "./Intro";
+import Result from "./Result";
+import { useState } from "react";
+import intervalToDuration from "date-fns/intervalToDuration";
 
 function App() {
+  const [birthday, setBirthday] = useState("");
+  const [age, setAge] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsSubmitted(true);
+    setAge(
+      intervalToDuration({
+        start: new Date(birthday),
+        end: new Date(),
+      }).years
+    );
+  };
+  const handleChange = (e) => {
+    setBirthday(e.target.value);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <header className="App-header">Dis da header</header>
+      {isSubmitted ? (
+        <Result birthday={birthday} age={age} />
+      ) : (
+        <Intro
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          birthday={birthday}
+        />
+      )}
     </div>
   );
 }

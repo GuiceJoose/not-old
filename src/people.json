@@ -1,0 +1,110 @@
+[
+  {
+    "name:": "Galileo Galilei",
+    "yob:": 1564,
+    "accomplishment:": "published ‘Two New Sciences’",
+    "acc date:": 1638
+  },
+  {
+    "name:": "Dmitri Mendeleev",
+    "yob:": 1834,
+    "accomplishment:": "proposed his periodic table of the elements",
+    "acc date:": 1869
+  },
+  {
+    "name:": "Louis Pasteur",
+    "yob:": 1822,
+    "accomplishment:": "patented his process for brewing beer",
+    "acc date:": 1873
+  },
+  {
+    "name:": "Albert Einstein",
+    "yob:": 1879,
+    "accomplishment:": "published his theory of general relativity",
+    "acc date:": 1916
+  },
+  {
+    "name:": "Nelson Mandela",
+    "yob:": 1918,
+    "accomplishment:": "was elected president of South Africa",
+    "acc date:": 1994
+  },
+  {
+    "name:": "Henry Ford",
+    "yob:": 1863,
+    "accomplishment:": "debuted  the Model T",
+    "acc date:": 1908
+  },
+  {
+    "name:": "Isaac Newton",
+    "yob:": 1643,
+    "accomplishment:": "published ‘Mathematical Principles of Natural Philosophy’, establishing the physics of classical mechanics",
+    "acc date:": 1687
+  },
+  {
+    "name:": "Genghis Khan",
+    "yob:": 1162,
+    "accomplishment:": "united the Mongolian Empire",
+    "acc date:": 1206
+  },
+  {
+    "name:": "John Glenn",
+    "yob:": 1921,
+    "accomplishment:": "became the oldest person to enter Earth’s orbit",
+    "acc date:": 1998
+  },
+  {
+    "name:": "Rosemary Smith",
+    "yob:": 1937,
+    "accomplishment:": "became the oldest person to drive an F1 car",
+    "acc date:": 2017
+  },
+  {
+    "name:": "Diana Nyad",
+    "yob:": 1949,
+    "accomplishment:": "swam from Cuba to Florida",
+    "acc date:": 2013
+  },
+  {
+    "name:": "Colonel Sanders",
+    "yob:": 1890,
+    "accomplishment:": "franchised the ‘Kentucky Fried Chicken’ secret recipe",
+    "acc date:": 1952
+  },
+  {
+    "name:": "Peter Roget",
+    "yob:": 1779,
+    "accomplishment:": "published the first thesaurus",
+    "acc date:": 1852
+  },
+  {
+    "name:": "Noah Webster",
+    "yob:": 1758,
+    "accomplishment:": "published ‘An American Dictionary of the English Language’",
+    "acc date:": 1828
+  },
+  {
+    "name:": "Momofuku Ando",
+    "yob:": 1910,
+    "accomplishment:": "invented Cup Noodles",
+    "acc date:": 1971
+  },
+  {
+    "name:": "Benjamin Franklin",
+    "yob:": 1706,
+    "accomplishment:": "signed the Declaration of Independence",
+    "acc date:": 1776
+  },
+  {
+    "name:": "Fauja Singh",
+    "yob:": 1911,
+    "accomplishment:": "ran a marathon",
+    "acc date:": 2012
+  },
+  {
+    "name:": "Charles Darwin",
+    "yob:": 1809,
+    "accomplishment:": "published ‘On the Origin of Species’",
+    "acc date:": 1859
+  }
+]
