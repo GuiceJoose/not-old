@@ -4,13 +4,13 @@ const Intro = (props) => {
   const birthday = props.birthday;
 
   return (
-    <div>
+    <div className="intro">
       <p>
         Are you feeling old? Worried you're past your prime? Fret not, much
         older people than you have achieved great things! Enter your birthday to
         see what people older than you have accomplished!
       </p>
-      <form onSubmit={handleSubmit}>
+      <form className="intro-form" onSubmit={handleSubmit}>
         <label htmlFor="birthday">Your Birthday:</label>
         <input
           onChange={handleChange}

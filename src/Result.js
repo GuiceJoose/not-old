@@ -27,7 +27,7 @@ const Result = (props) => {
   }, [age]);
 
   return (
-    <div>
+    <div className="result">
       {console.log(person)}
       {message}
     </div>
