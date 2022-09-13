@@ -7,6 +7,13 @@ const Result = (props) => {
   const age = props.age;
 
   useEffect(() => {
+    if (age > 100) {
+      setMessage(
+        "Okay, maybe you are old. Perhaps it's time to kick back and relax"
+      );
+      return;
+    }
+
     // Get people who were older than input age
     const olderPeople = people.filter((person) => {
       return age < person["acc date:"] - person["yob:"];
@@ -21,6 +28,7 @@ const Result = (props) => {
     const accomplishment = olderPerson["accomplishment:"];
 
     setPerson(olderPerson);
+
     setMessage(
       "At " + olderAge + " years old, " + olderPersonName + " " + accomplishment
     );

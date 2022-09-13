@@ -2,6 +2,7 @@ const Intro = (props) => {
   const handleSubmit = props.handleSubmit;
   const handleChange = props.handleChange;
   const birthday = props.birthday;
+  const showErrorMessage = props.showErrorMessage;
 
   return (
     <div className="intro">
@@ -20,6 +21,7 @@ const Intro = (props) => {
           value={birthday}
         ></input>
         <button type="submit">Inspire me!</button>
+        {showErrorMessage ? <div>Please enter a real birthday</div> : ""}
       </form>
     </div>
   );
