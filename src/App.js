@@ -4,7 +4,7 @@ import Result from "./Result";
 import Background from "./Background";
 import { useState } from "react";
 import intervalToDuration from "date-fns/intervalToDuration";
-import { isBefore } from "date-fns";
+import { isBefore, set } from "date-fns";
 
 function App() {
   const [birthday, setBirthday] = useState("");
@@ -13,8 +13,48 @@ function App() {
   const [isBirthdayValid, setIsBirthdayValid] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
 
+  const [person, setPerson] = useState("");
+  const [message, setMessage] = useState("");
+  const people = require("./people.json");
+
+  const setPersonAndMessage = (age) => {
+    if (age > 100) {
+      setMessage(
+        "Okay, maybe you are old. Perhaps it's time to kick back and relax"
+      );
+      return;
+    }
+
+    // Get people who were older than input age
+    const olderPeople = people.filter((person) => {
+      return age < person["accDate"] - person["yob"];
+    });
+
+    // Get random person from array above
+    const olderPerson =
+      olderPeople[Math.floor(Math.random() * olderPeople.length)];
+
+    const olderPersonName = olderPerson["name"];
+    const spaceToUnderscores = (string) => {
+      return string.split(" ").join("_");
+    };
+
+    const olderAge = olderPerson["accDate"] - olderPerson["yob"];
+    const accomplishment = olderPerson["accomplishment"];
+
+    setPerson(olderPerson);
+
+    setMessage(
+      "At " + olderAge + " years old, " + olderPersonName + " " + accomplishment
+    );
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!birthday) {
+      setShowErrorMessage(true);
+      return;
+    }
     const isDateBeforeTomorrow = isBefore(new Date(birthday), new Date());
     const age = intervalToDuration({
       start: new Date(birthday),
@@ -29,7 +69,9 @@ function App() {
 
     setAge(age);
     setIsSubmitted(true);
+    setPersonAndMessage(age);
   };
+
   const handleChange = (e) => {
     setBirthday(e.target.value);
   };
@@ -38,7 +80,15 @@ function App() {
     <div className="App">
       <Background />
       {isSubmitted && isBirthdayValid ? (
-        <Result birthday={birthday} age={age} />
+        <Result
+          person={person}
+          message={message}
+          age={age}
+          birthday={birthday}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          showErrorMessage={showErrorMessage}
+        />
       ) : (
         <Intro
           handleChange={handleChange}
