@@ -5,6 +5,7 @@ import Background from "./Background";
 import { useState } from "react";
 import intervalToDuration from "date-fns/intervalToDuration";
 import { isBefore, set } from "date-fns";
+import { Flex } from "@chakra-ui/react";
 
 function App() {
   const [birthday, setBirthday] = useState("");
@@ -35,10 +36,6 @@ function App() {
       olderPeople[Math.floor(Math.random() * olderPeople.length)];
 
     const olderPersonName = olderPerson["name"];
-    const spaceToUnderscores = (string) => {
-      return string.split(" ").join("_");
-    };
-
     const olderAge = olderPerson["accDate"] - olderPerson["yob"];
     const accomplishment = olderPerson["accomplishment"];
 
@@ -65,6 +62,7 @@ function App() {
       setShowErrorMessage(false);
     } else {
       setShowErrorMessage(true);
+      return;
     }
 
     setAge(age);
@@ -77,8 +75,12 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Background />
+    <Flex
+      h={"100vh"}
+      direction={"column"}
+      justifyContent={"center"}
+      alignItems={"center"}
+    >
       {isSubmitted && isBirthdayValid ? (
         <Result
           person={person}
@@ -97,7 +99,7 @@ function App() {
           showErrorMessage={showErrorMessage}
         />
       )}
-    </div>
+    </Flex>
   );
 }
 

@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import InputForm from "./InputForm";
+import { Spinner, Link, Image, Box, Container, Stack } from "@chakra-ui/react";
 
 const Result = (props) => {
   const message = props.message;
   const person = props.person;
   const [wikiImgUrl, setWikiImgUrl] = useState("");
   const [wikiImgName, setWikiImgName] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const spaceToUnderscores = (string) => {
     return string.split(" ").join("_");
@@ -56,29 +57,35 @@ const Result = (props) => {
   }, [wikiImgUrl]);
 
   return (
-    <div className="result">
-      <div className="result-box">
+    <Stack spacing={"10vh"}>
+      <Container>
         {isLoading ? (
-          <div className="loading">Loading...</div>
+          <Spinner size={"xl"} />
         ) : (
-          <div className="image-container">
-            <img src={wikiImgUrl} />
-            <a
+          <Container w={"25vw"} centerContent>
+            <Image src={wikiImgUrl} alt={person.name} />
+            <Link
+              rel="noreferrer"
               target={"_blank"}
               href={`https://en.wikipedia.org/wiki/${wikiTitle}`}
             >
               Wiki Page
-            </a>
-          </div>
+            </Link>{" "}
+            {message}
+          </Container>
         )}
-
-        {message}
-      </div>
-      <section className="input-area">
+      </Container>
+      <Box
+        // position="absolute"
+        // left="50vw"
+        // bottom="20vh"
+        // transform="translate(-50%, -50%)"
+        className="input-area"
+      >
         Try again:
         <InputForm {...props} />
-      </section>
-    </div>
+      </Box>
+    </Stack>
   );
 };
 
