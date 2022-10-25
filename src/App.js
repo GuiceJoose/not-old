@@ -1,7 +1,6 @@
 import "./App.css";
 import Intro from "./Intro";
 import Result from "./Result";
-import Background from "./Background";
 import { useState } from "react";
 import intervalToDuration from "date-fns/intervalToDuration";
 import { isBefore, set } from "date-fns";

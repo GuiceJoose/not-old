@@ -17,7 +17,7 @@ const Result = (props) => {
 
   // There doesn't appear to be a way to get the main image on a wikipedia page,
   // so the first API call gets the file name of the image used as the thumbnail,
-  // then the second gets the source for that image.
+  // then the second API call gets the source for that image.
 
   const getWikiImageName = async () => {
     setIsLoading(true);
@@ -34,21 +34,42 @@ const Result = (props) => {
     return response.json();
   };
 
+  // Get thumbnail image filename from person's wiki page
+
   useEffect(() => {
-    getWikiImageName().then((data) =>
+    (async () => {
+      const wikiImageName = await getWikiImageName();
       setWikiImgName(
-        `File:${data.query.pages[Object.keys(data.query.pages)[0]].pageimage}`
-      )
-    );
+        `File:${
+          wikiImageName.query.pages[Object.keys(wikiImageName.query.pages)[0]]
+            .pageimage
+        }`
+      );
+    })();
+
+    // getWikiImageName().then((data) =>
+    //   setWikiImgName(
+    //     `File:${data.query.pages[Object.keys(data.query.pages)[0]].pageimage}`
+    //   )
+    // );
   }, [person]);
+
+  // Get image url for filename above
 
   useEffect(() => {
     if (wikiImgName !== "") {
-      getWikiImageUrl().then((data) =>
+      (async () => {
+        const wikiImageUrl = await getWikiImageUrl();
         setWikiImgUrl(
-          data.query.pages[Object.keys(data.query.pages)[0]].imageinfo[0].url
-        )
-      );
+          wikiImageUrl.query.pages[Object.keys(wikiImageUrl.query.pages)[0]]
+            .imageinfo[0].url
+        );
+      })();
+      // getWikiImageUrl().then((data) =>
+      //   setWikiImgUrl(
+      //     data.query.pages[Object.keys(data.query.pages)[0]].imageinfo[0].url
+      //   )
+      // );
     }
   }, [wikiImgName]);
 
