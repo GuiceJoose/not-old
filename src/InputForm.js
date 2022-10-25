@@ -1,9 +1,9 @@
-const InputForm = (props) => {
-  const handleSubmit = props.handleSubmit;
-  const handleChange = props.handleChange;
-  const birthday = props.birthday;
-  const showErrorMessage = props.showErrorMessage;
-
+const InputForm = ({
+  handleSubmit,
+  handleChange,
+  birthday,
+  showErrorMessage,
+}) => {
   return (
     <form className="intro-form" onSubmit={handleSubmit}>
       <label htmlFor="birthday">Your Birthday:</label>

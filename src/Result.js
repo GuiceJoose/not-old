@@ -73,29 +73,31 @@ const Result = (props) => {
     }
   }, [wikiImgName]);
 
-  useEffect(() => {
-    setIsLoading(false);
-  }, [wikiImgUrl]);
-
   return (
     <Stack spacing={"10vh"}>
-      <Container>
-        {isLoading ? (
-          <Spinner size={"xl"} />
-        ) : (
-          <Container w={"25vw"} centerContent>
-            <Image src={wikiImgUrl} alt={person.name} />
-            <Link
-              rel="noreferrer"
-              target={"_blank"}
-              href={`https://en.wikipedia.org/wiki/${wikiTitle}`}
-            >
-              Wiki Page
-            </Link>{" "}
-            {message}
-          </Container>
-        )}
+      (
+      <Container w={"25vw"} centerContent>
+        <Spinner display={isLoading ? "block" : "none"} />
+        <Container display={isLoading ? "none" : "block"}>
+          <Image
+            onLoad={() => {
+              console.log("loaded");
+              setIsLoading(false);
+            }}
+            src={wikiImgUrl}
+            alt={person.name}
+          />
+          <Link
+            rel="noreferrer"
+            target={"_blank"}
+            href={`https://en.wikipedia.org/wiki/${wikiTitle}`}
+          >
+            Wiki Page
+          </Link>{" "}
+          {message}
+        </Container>
       </Container>
+      )
       <Box
         // position="absolute"
         // left="50vw"
