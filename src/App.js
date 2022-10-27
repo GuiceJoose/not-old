@@ -5,7 +5,7 @@ import Result from "./Result";
 import { useState } from "react";
 import intervalToDuration from "date-fns/intervalToDuration";
 import { isBefore, set } from "date-fns";
-import { Flex } from "@chakra-ui/react";
+import { Button, Flex } from "@chakra-ui/react";
 
 function App() {
   const [birthday, setBirthday] = useState("");
@@ -13,6 +13,7 @@ function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isBirthdayValid, setIsBirthdayValid] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
+  const [backgroundPaused, setBackgroundPaused] = useState(false);
 
   const [person, setPerson] = useState("");
   const [message, setMessage] = useState("");
@@ -76,7 +77,7 @@ function App() {
 
   return (
     <>
-      <Background />
+      <Background backgroundPaused={backgroundPaused} key={backgroundPaused} />
       <Flex
         h={"100vh"}
         direction={"column"}
@@ -102,6 +103,26 @@ function App() {
           />
         )}
       </Flex>
+      <Button
+        _hover={{
+          backgroundColor: "rgb(0,0,0,100%)",
+          border: "3px solid #ECFF17",
+        }}
+        fontSize="1.5rem"
+        color="#ECFF17"
+        backgroundColor="rgb(0,0,0,100%)"
+        position="absolute"
+        bottom="0"
+        left="50%"
+        transform="translate(-50%, 0%)"
+        onClick={() => {
+          setBackgroundPaused(!backgroundPaused);
+        }}
+      >
+        {backgroundPaused
+          ? "Start the fun space animation back up!"
+          : "I'm dizzy stop this thing!"}
+      </Button>
     </>
   );
 }
