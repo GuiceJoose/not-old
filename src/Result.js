@@ -1,6 +1,14 @@
 import { useEffect, useState } from "react";
 import InputForm from "./InputForm";
-import { Spinner, Link, Image, Box, Container, Stack } from "@chakra-ui/react";
+import {
+  Spinner,
+  Link,
+  Image,
+  Box,
+  Container,
+  Stack,
+  Heading,
+} from "@chakra-ui/react";
 
 const Result = (props) => {
   const message = props.message;
@@ -46,12 +54,6 @@ const Result = (props) => {
         }`
       );
     })();
-
-    // getWikiImageName().then((data) =>
-    //   setWikiImgName(
-    //     `File:${data.query.pages[Object.keys(data.query.pages)[0]].pageimage}`
-    //   )
-    // );
   }, [person]);
 
   // Get image url for filename above
@@ -65,48 +67,60 @@ const Result = (props) => {
             .imageinfo[0].url
         );
       })();
-      // getWikiImageUrl().then((data) =>
-      //   setWikiImgUrl(
-      //     data.query.pages[Object.keys(data.query.pages)[0]].imageinfo[0].url
-      //   )
-      // );
     }
   }, [wikiImgName]);
 
   return (
     <Stack spacing={"10vh"}>
       (
-      <Container w={"25vw"} centerContent>
-        <Spinner display={isLoading ? "block" : "none"} />
-        <Container display={isLoading ? "none" : "block"}>
-          <Image
-            onLoad={() => {
-              console.log("loaded");
-              setIsLoading(false);
-            }}
-            src={wikiImgUrl}
-            alt={person.name}
-          />
-          <Link
-            rel="noreferrer"
-            target={"_blank"}
-            href={`https://en.wikipedia.org/wiki/${wikiTitle}`}
-          >
-            Wiki Page
-          </Link>{" "}
-          {message}
+      <Container maxWidth="1000px">
+        <Spinner
+          boxSize="100px"
+          thickness="10px"
+          color="yellow"
+          display={isLoading ? "block" : "none"}
+        />
+        <Container textAlign="center" display={isLoading ? "none" : "block"}>
+          {message !==
+            "Okay, maybe you are old. Perhaps it's time to kick back and relax" && (
+            <Image
+              onLoad={() => {
+                console.log("loaded");
+                setIsLoading(false);
+              }}
+              src={wikiImgUrl}
+              alt={person.name}
+            />
+          )}
+
+          <Heading textAlign="center" color="#ECFF17">
+            {message}
+          </Heading>
+          {message !==
+            "Okay, maybe you are old. Perhaps it's time to kick back and relax" && (
+            <Link
+              color="#9DA33F"
+              rel="noreferrer"
+              target={"_blank"}
+              href={`https://en.wikipedia.org/wiki/${wikiTitle}`}
+            >
+              Click here to learn more about {person.name}
+            </Link>
+          )}
         </Container>
       </Container>
       )
       <Box
+        display={isLoading && "none"}
         // position="absolute"
         // left="50vw"
         // bottom="20vh"
         // transform="translate(-50%, -50%)"
-        className="input-area"
       >
-        Try again:
-        <InputForm {...props} />
+        <InputForm
+          {...props}
+          inputHeading={"Need more inspiration? Try again:"}
+        />
       </Box>
     </Stack>
   );
