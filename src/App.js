@@ -1,4 +1,5 @@
 import "./App.css";
+import Background from "./Background";
 import Intro from "./Intro";
 import Result from "./Result";
 import { useState } from "react";
@@ -74,31 +75,34 @@ function App() {
   };
 
   return (
-    <Flex
-      h={"100vh"}
-      direction={"column"}
-      justifyContent={"center"}
-      alignItems={"center"}
-    >
-      {isSubmitted && isBirthdayValid ? (
-        <Result
-          person={person}
-          message={message}
-          age={age}
-          birthday={birthday}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-          showErrorMessage={showErrorMessage}
-        />
-      ) : (
-        <Intro
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-          birthday={birthday}
-          showErrorMessage={showErrorMessage}
-        />
-      )}
-    </Flex>
+    <>
+      <Background />
+      <Flex
+        h={"100vh"}
+        direction={"column"}
+        justifyContent={"center"}
+        alignItems={"center"}
+      >
+        {isSubmitted && isBirthdayValid ? (
+          <Result
+            person={person}
+            message={message}
+            age={age}
+            birthday={birthday}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            showErrorMessage={showErrorMessage}
+          />
+        ) : (
+          <Intro
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            birthday={birthday}
+            showErrorMessage={showErrorMessage}
+          />
+        )}
+      </Flex>
+    </>
   );
 }
 
