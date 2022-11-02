@@ -76,12 +76,13 @@ function App() {
   };
 
   return (
-    <Box minH={"100vh"} paddingBottom={"var(--chakra-sizes-10)"}>
+    <Box display="flex" flexDir="column" justifyContent="center" minH={"100vh"}>
       <Background backgroundPaused={backgroundPaused} key={backgroundPaused} />
       <Flex
         direction={"column"}
         justifyContent={"center"}
         alignItems={"center"}
+        marginBottom="var(--chakra-sizes-10)"
       >
         {isSubmitted && isBirthdayValid ? (
           <Result

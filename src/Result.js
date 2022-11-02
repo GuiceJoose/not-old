@@ -84,6 +84,7 @@ const Result = (props) => {
           {message !==
             "Okay, maybe you are old. Perhaps it's time to kick back and relax" && (
             <Image
+              marginTop=".5rem"
               onLoad={() => {
                 console.log("loaded");
                 setIsLoading(false);
