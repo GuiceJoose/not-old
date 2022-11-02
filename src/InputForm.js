@@ -23,7 +23,12 @@ const InputForm = ({
           alignItems="center"
           isInvalid={showErrorMessage}
         >
-          <FormLabel fontSize="1.5rem" color="#F5FF8A" htmlFor="birthday">
+          <FormLabel
+            textAlign="center"
+            fontSize="1.5rem"
+            color="#F5FF8A"
+            htmlFor="birthday"
+          >
             {inputHeading}
           </FormLabel>
           <Input

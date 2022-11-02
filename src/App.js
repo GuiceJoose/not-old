@@ -5,7 +5,7 @@ import Result from "./Result";
 import { useState } from "react";
 import intervalToDuration from "date-fns/intervalToDuration";
 import { isBefore, set } from "date-fns";
-import { Button, Flex } from "@chakra-ui/react";
+import { Box, Button, Flex } from "@chakra-ui/react";
 
 function App() {
   const [birthday, setBirthday] = useState("");
@@ -76,10 +76,9 @@ function App() {
   };
 
   return (
-    <>
+    <Box minH={"100vh"} paddingBottom={"var(--chakra-sizes-10)"}>
       <Background backgroundPaused={backgroundPaused} key={backgroundPaused} />
       <Flex
-        h={"100vh"}
         direction={"column"}
         justifyContent={"center"}
         alignItems={"center"}
@@ -123,7 +122,7 @@ function App() {
           ? "Start the fun space animation back up!"
           : "I'm dizzy stop this thing!"}
       </Button>
-    </>
+    </Box>
   );
 }
 
